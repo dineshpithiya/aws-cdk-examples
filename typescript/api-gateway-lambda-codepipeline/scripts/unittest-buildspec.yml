@@ -1,0 +1,11 @@
+version: 0.2
+phases:
+  install:
+    commands:
+      - echo "Install some stuff"
+  build:
+    commands:
+      - echo Maybe we should run a few tests before we deploy our stack
+  post_build:
+    commands:
+      - echo ***** Unit testing completed *****

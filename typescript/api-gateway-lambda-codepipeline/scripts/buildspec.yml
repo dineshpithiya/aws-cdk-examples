@@ -1,0 +1,24 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18
+    commands:
+      - echo "Installing aws CDK latest version"
+      - npm install aws-cdk -g
+      - echo "Installing layers packages dependencies..."
+      - chmod +x . ./scripts/install-modules.sh
+      - vim ./scripts/install-modules.sh -c "set ff=unix" -c ":wq"
+      - . ./scripts/install-modules.sh
+  build:
+    commands:
+      - echo "Clear CDK content so we don't use past SSM parameter values"
+      - npm install
+      - cdk context --clear
+      - cdk bootstrap
+      - cdk synth
+      - cdk diff
+      - cdk deploy --all --require-approval never
+  post_build:
+    commands:
+      - echo ***** Stack deployed successfully *****

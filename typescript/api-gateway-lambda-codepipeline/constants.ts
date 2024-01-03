@@ -1,0 +1,4 @@
+export const WORKLOAD_NAME = "TY-CDK-DEMO"
+export const COMPONENT_NAME = "Backend"
+export const APP_NAME = WORKLOAD_NAME+"-"+COMPONENT_NAME
+export const PIPELINE_APP_NAME = WORKLOAD_NAME+"-PIPELINE"
